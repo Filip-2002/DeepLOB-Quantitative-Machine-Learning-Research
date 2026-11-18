@@ -51,7 +51,7 @@ These are **sequential development experiments, not controlled ablations**. They
 
 **Dataset:** FI-2010, with limit order book prices and quantities represented as 40 input features. Each model example uses a rolling window of **100 LOB observations**. The experiments shown here use the **k = 10 event prediction horizon**.
 
-**Architecture:** The established DeepLOB model combines convolutional layers for local LOB structure, Inception-style multi-scale feature extraction, and an LSTM for temporal dependencies. The output is a three-class mid-price movement prediction.
+**Architecture:** I developed and optimised a DeepLOB-based quantitative machine-learning system combining convolutional neural networks, Inception modules and long short-term memory (LSTM) networks. The convolutional layers extract structural patterns from high-frequency limit order book data, while the Inception modules capture multi-scale market features. The LSTM models temporal dependencies, enabling the system to classify short-term mid-price movements as Down, Stationary or Up.
 
 **Experimental setup:** The best reported run used temporally sampled observations, a chronological training/validation separation with a gap, and validation-based checkpoint selection. Rolling windows can overlap within data splits; overlap handling and completely untouched future-period evaluation remain important future work.
 

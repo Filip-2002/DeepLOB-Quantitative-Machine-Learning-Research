@@ -95,19 +95,25 @@ Generated dataset tensors, downloaded FI-2010 source data, local environments an
 The commands below are intended for **Windows PowerShell** from the repository root, with Python 3.12 installed. Training time and memory requirements vary by machine.
 
 ```powershell
+# Clone the repository
+git clone https://github.com/Filip-2002/DeepLOB-Quantitative-Machine-Learning-Research.git
+
+# Enter the project folder
+cd DeepLOB-Quantitative-Machine-Learning-Research
+
 # Create a virtual environment
 python -m venv .venv
 
 # Install dependencies
 .\.venv\Scripts\python.exe -m pip install -r requirements.txt
 
-# Download FI-2010 data
+# Download the FI-2010 dataset
 .\.venv\Scripts\python.exe scripts/download_data.py
 
-# Prepare the training data
+# Prepare the training dataset
 .\.venv\Scripts\python.exe scripts/prepare_stride4.py
 
-# Train the model
+# Train and evaluate the model
 .\.venv\Scripts\python.exe scripts/train.py --config configs/deeplob_laptop_stride4.yaml --device cpu
 
 # Run automated tests

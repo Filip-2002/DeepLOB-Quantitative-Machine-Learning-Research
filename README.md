@@ -4,7 +4,6 @@
 
 [![Python](https://img.shields.io/badge/Python-3.12-blue)](https://www.python.org/)
 [![PyTorch](https://img.shields.io/badge/Framework-PyTorch-ee4c2c)](https://pytorch.org/)
-[![Licence: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 ## Overview
 
@@ -12,7 +11,7 @@ How much predictive information can a neural network extract from high-frequency
 
 This repository documents my **CPU-based quantitative machine-learning experiments** on the FI-2010 benchmark, using a DeepLOB-based CNN-Inception-LSTM model to classify near-term mid-price movement as **Down**, **Stationary**, or **Up**. I focused on temporal data sampling, training optimisation, architecture comparisons, class imbalance, and rigorous model diagnostics.
 
-The experiments extend an [open-source DeepLOB implementation](https://github.com/chirath-st/lob-deep-learning-trading). My added preprocessing, training experiments, configurations, diagnostics and visualisations are distinguished from the upstream work below; the original code and research remain credited.
+My experiments focus on the relationship between training-data coverage, optimisation choices and class-level predictive performance. The repository includes the scripts, configurations and figures used to document these investigations.
 
 ## Results at a Glance
 
@@ -87,8 +86,7 @@ Class-level measures and macro-F1 help reveal directional weaknesses that overal
 | `configs/deeplob_laptop_*.yaml` | Tuned, diverse and stride-4 training configurations |
 | `configs/cnn_attention_laptop.yaml` | Attention comparison configuration |
 | `experiments/laptop_stride4/figures/` | Figures shown in this README |
-| `src/`, `tests/`, other `scripts/` | Underlying open-source model and project framework (see attribution) |
-| `README.upstream.md` | Original project documentation, kept for reference |
+| `src/`, `tests/`, other `scripts/` | Model implementation, training utilities and automated tests |
 
 Generated dataset tensors, downloaded FI-2010 source data, local environments and temporary pytest output are intentionally **not committed**.
 
@@ -101,7 +99,7 @@ The commands below are intended for **Windows PowerShell** from the repository r
 python -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r requirements.txt
 
-# Download FI-2010 source data (see upstream README for dataset information)
+# Download FI-2010 source data
 .\.venv\Scripts\python.exe scripts/download_data.py
 
 # Generate the denser CPU-sized sample used in the final experiment
@@ -131,9 +129,3 @@ Next research steps:
 5. **Generalisation:** investigate behaviour across new market periods, varying liquidity and distribution shifts.
 
 More GPU compute could enable larger and more systematic experiments, but **does not guarantee higher accuracy**. Likewise, predictive accuracy does not by itself demonstrate economic advantage.
-
-## Credits and Licence
-
-This repository builds on the [DeepLOB reproduction and extensions by chirath-st](https://github.com/chirath-st/lob-deep-learning-trading), which supplied the core architecture and substantial original training, model comparison and backtesting code. See [`README.upstream.md`](README.upstream.md) for its original research description and credits. The [DeepLOB paper by Zhang, Zohren & Roberts](https://arxiv.org/abs/1808.03668) and the [FI-2010 benchmark](https://doi.org/10.1002/for.2543) provide the scientific foundations.
-
-The original MIT licence and copyright notice are preserved in [`LICENSE`](LICENSE); see that file for the applicable terms.

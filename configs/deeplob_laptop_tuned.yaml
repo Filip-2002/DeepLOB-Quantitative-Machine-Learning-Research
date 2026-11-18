@@ -1,0 +1,27 @@
+model:
+  name: deeplob
+  num_classes: 3
+  conv_filters: 32
+  leaky_relu_slope: 0.01
+  inception_filters: 64
+  lstm_hidden: 64
+  lstm_layers: 1
+data:
+  dataset: fi2010
+  normalization: DecPre
+  lookback: 100
+  horizon: 10
+  num_levels: 10
+  setup: 2
+training:
+  batch_size: 64
+  learning_rate: 0.001
+  optimizer: adam
+  adam_epsilon: 1.0e-08
+  max_epochs: 12
+  early_stopping_patience: 4
+  seed: 42
+logging:
+  wandb_project: deeplob-replication
+  save_dir: experiments/laptop_tuned
+  log_every_n_steps: 100
